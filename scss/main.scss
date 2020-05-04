@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap');
+
+$primary: #2d53cf;
+
+$secondary: lighten($primary, 15%);
+$white: #f9f9f9f9;
+$black: rgb(19, 18, 18);
+$grey:#c2c2bd;
+$light-grey:lighten(#c2c2bd, 5%);
+$green:  lighten(#09b33c,10%);
+$dark-green:  lighten(#09b33c,8%);
+$red: rgb(231, 40, 22);
+
+html, *{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body{
+    background: $primary;
+    font-family: 'Baloo Bhaina 2',cursive;
+    font-size: 16px;
+}
+
+.new-task{
+    background: $white;
+    box-shadow: 0px 3px 10px 1px $black;
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left:50%;
+    opacity: 0;
+    width: 500px;
+    max-height: 600px;
+    margin-left:-250px;
+    margin-top:-294px;
+    z-index: 10;
+    border-radius: 5px;
+    
+
+    padding: 10px 15px 40px 8px;
+    font-size: 1.2rem;
+    color: $black;
+
+    h2 {
+        padding: 3px;
+        padding-bottom:0;
+        height: 50px;
+        border-bottom:2px solid $light-grey;
+    }
+
+    .task-input-area{
+        display: flex;
+        flex-direction: column;
+        .task{
+            position: relative;
+            margin: 15px 0 15px 0;
+            label{
+                display: inline-block;
+                position: relative;
+                z-index: 10;
+                color: $black;
+                background-color: $white;
+                height: 30px;
+                left:5px;
+                padding-top:7px;
+                cursor:text;
+                
+                
+            }
+            input {
+                width: 100%;
+                outline: none;
+                height: 2.5rem;
+                display: inline-block;
+                padding: 9px 3px 9px 3px;
+                border: $secondary solid 1px;
+                font-size: 1.1rem;
+                position: absolute;
+                top:24px;
+                left:0;
+                z-index: 5;
+                // padding:
+                
+            }
+        }
+    }
+}
+
+.back-screen{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: $secondary;
+    opacity: 0.2;
+}
+
+
+.container{
+
+    h1{
+        color: $white;
+        font-size: 4em;
+        text-align: center;
+    }
+    .menu{
+        position: relative;
+        border-radius: 4px;
+        // box-shadow: 0 3px 9px 1px $black;
+        margin:0 auto;
+        background: $white;
+        padding: 25px;
+        width: 700px;
+
+        .buttons{ 
+            // margin-top:7px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 10px;
+            text-align: center;
+            margin-bottom:8px;
+            
+            button {
+                cursor: pointer;
+                color: white;
+                margin: 0 auto;
+                width: 100%;
+                font-size: 1.2rem;
+                outline: none;
+                border: none;
+
+                background: $light-grey;
+
+                height: 1.8rem;
+                border-radius: 5px;
+                padding:4px 0 4px 0;
+
+
+                &:hover{
+                    background: $grey;
+                }
+
+                &.create{
+                    background: $green;
+                    &:hover{
+                        background: $dark-green;
+                    }
+
+                }   
+            }
+            
+        }
+
+        .input-search{
+            position: relative;
+            height: 3.7rem;
+            margin-bottom:15px;
+            // height: ;
+            // display: flex;
+            // flex-direction: column;
+            // font-size: 1.8rem;
+            
+            input{
+                position: relative;
+                outline: none;
+                border:none;
+                background: none;
+
+                padding-bottom:5px;
+                width: 100%;
+                height: 1.8rem;
+                top:1.9rem;
+
+                font-size: 1.5rem;
+                color: $black;
+                border-bottom: $secondary 2px solid;
+                transition: all .2s;
+
+                &:hover, &:active{
+                    border-bottom: $primary solid 2px;
+                }
+                &:valid + .label-search{
+                    top: -5px;
+                    left:0;
+                    font-size: 1.2em;
+                }
+            }
+            .label-search{
+                position: absolute;
+                left:0px;
+                top:1.4rem;
+                pointer-events: none;
+                
+
+                transition: all .3s ease-out;
+                font-size: 1.5rem;
+                color:$secondary;
+
+            }
+        }
+
+        .to-dos{
+            padding:5px;
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            // grid-column: ;
+            .item{
+                position: relative;
+                flex: 1;
+                // border: 1px solid $secondary;
+
+                margin-top:10px;
+                padding: 3px;
+                padding-bottom: 0;
+
+                border-bottom: $secondary 1px solid;
+                transition: all .3s ;
+                cursor: pointer;
+                &:hover{
+                    border-bottom: $primary 1px solid;
+                }
+
+                p{
+                    color:$black;
+                    display: inline-block;
+                    padding-bottom: 0;
+                }
+                button{
+                    background: transparent;
+                    border:none;
+                    color: $white;
+                    cursor: pointer;
+                     &.delete{
+                        position: absolute;
+                        // top:0px;
+                        right: 0px;
+                        background: lighten($red, 10%);
+                        width: 25px;
+                        height: 25px;
+                        &:hover{
+                            background: $red;
+                        }
+                    }
+                     &.infos{
+                         position: absolute;
+                         right:25px;
+                         background: lighten($green,5%);
+                         height: 25px;
+                         width: 90px;
+                         color: $white;
+                         font-size: 1rem;
+                         &:hover{
+                             background: $green;
+                         }
+                        
+                    
+                        }
+                }
+            }
+        }
+
+    }
+}

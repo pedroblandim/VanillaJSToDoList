@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap");
+html, * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  background: #2d53cf;
+  font-family: 'Baloo Bhaina 2',cursive;
+  font-size: 16px; }
+
+.new-task {
+  background: #f9f9f9f9;
+  box-shadow: 0px 3px 10px 1px #131212;
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  width: 500px;
+  max-height: 600px;
+  margin-left: -250px;
+  margin-top: -294px;
+  z-index: 10;
+  border-radius: 5px;
+  padding: 10px 15px 40px 8px;
+  font-size: 1.2rem;
+  color: #131212; }
+  .new-task h2 {
+    padding: 3px;
+    padding-bottom: 0;
+    height: 50px;
+    border-bottom: 2px solid #cececa; }
+  .new-task .task-input-area {
+    display: flex;
+    flex-direction: column; }
+    .new-task .task-input-area .task {
+      position: relative;
+      margin: 15px 0 15px 0; }
+      .new-task .task-input-area .task label {
+        display: inline-block;
+        position: relative;
+        z-index: 10;
+        color: #131212;
+        background-color: #f9f9f9f9;
+        height: 30px;
+        left: 5px;
+        padding-top: 7px;
+        cursor: text; }
+      .new-task .task-input-area .task input {
+        width: 100%;
+        outline: none;
+        height: 2.5rem;
+        display: inline-block;
+        padding: 9px 3px 9px 3px;
+        border: #6a85df solid 1px;
+        font-size: 1.1rem;
+        position: absolute;
+        top: 24px;
+        left: 0;
+        z-index: 5; }
+
+.back-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #6a85df;
+  opacity: 0.2; }
+
+.container h1 {
+  color: #f9f9f9f9;
+  font-size: 4em;
+  text-align: center; }
+
+.container .menu {
+  position: relative;
+  border-radius: 4px;
+  margin: 0 auto;
+  background: #f9f9f9f9;
+  padding: 25px;
+  width: 700px; }
+  .container .menu .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    text-align: center;
+    margin-bottom: 8px; }
+    .container .menu .buttons button {
+      cursor: pointer;
+      color: white;
+      margin: 0 auto;
+      width: 100%;
+      font-size: 1.2rem;
+      outline: none;
+      border: none;
+      background: #cececa;
+      height: 1.8rem;
+      border-radius: 5px;
+      padding: 4px 0 4px 0; }
+      .container .menu .buttons button:hover {
+        background: #c2c2bd; }
+      .container .menu .buttons button.create {
+        background: #0be44c; }
+        .container .menu .buttons button.create:hover {
+          background: #0bda49; }
+  .container .menu .input-search {
+    position: relative;
+    height: 3.7rem;
+    margin-bottom: 15px; }
+    .container .menu .input-search input {
+      position: relative;
+      outline: none;
+      border: none;
+      background: none;
+      padding-bottom: 5px;
+      width: 100%;
+      height: 1.8rem;
+      top: 1.9rem;
+      font-size: 1.5rem;
+      color: #131212;
+      border-bottom: #6a85df 2px solid;
+      transition: all .2s; }
+      .container .menu .input-search input:hover, .container .menu .input-search input:active {
+        border-bottom: #2d53cf solid 2px; }
+      .container .menu .input-search input:valid + .label-search {
+        top: -5px;
+        left: 0;
+        font-size: 1.2em; }
+    .container .menu .input-search .label-search {
+      position: absolute;
+      left: 0px;
+      top: 1.4rem;
+      pointer-events: none;
+      transition: all .3s ease-out;
+      font-size: 1.5rem;
+      color: #6a85df; }
+  .container .menu .to-dos {
+    padding: 5px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column; }
+    .container .menu .to-dos .item {
+      position: relative;
+      flex: 1;
+      margin-top: 10px;
+      padding: 3px;
+      padding-bottom: 0;
+      border-bottom: #6a85df 1px solid;
+      transition: all .3s;
+      cursor: pointer; }
+      .container .menu .to-dos .item:hover {
+        border-bottom: #2d53cf 1px solid; }
+      .container .menu .to-dos .item p {
+        color: #131212;
+        display: inline-block;
+        padding-bottom: 0; }
+      .container .menu .to-dos .item button {
+        background: transparent;
+        border: none;
+        color: #f9f9f9f9;
+        cursor: pointer; }
+        .container .menu .to-dos .item button.delete {
+          position: absolute;
+          right: 0px;
+          background: #ed5243;
+          width: 25px;
+          height: 25px; }
+          .container .menu .to-dos .item button.delete:hover {
+            background: #e72816; }
+        .container .menu .to-dos .item button.infos {
+          position: absolute;
+          right: 25px;
+          background: #15f358;
+          height: 25px;
+          width: 90px;
+          color: #f9f9f9f9;
+          font-size: 1rem; }
+          .container .menu .to-dos .item button.infos:hover {
+            background: #0be44c; }
