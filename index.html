@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://kit.fontawesome.com/046054debc.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
@@ -10,7 +11,7 @@
 </head>
 <body>
 
-<!-- <div class="new-task" style="opacity: 0.95;" >
+<!-- <div class="task-description" style="opacity: 0.95;" >
     <h2>New activitie</h2>
     <div class="task-input-area">
         <div class="task">
@@ -26,44 +27,54 @@
             <input type="text" id="input-task-when">
         </div>
     </div>
-     -->
-</div>
+    
+</div> -->
 
 <div class="container">
     <h1 class="">To Do List</h1>
-    <div class="menu">
+    <div id="menu">
         <div class="buttons">
-            <button onclick="console.log('apertou');" >Add activitie</button>
-            <button class='create' onclick="createTodo()" >Create new activitie</button>
+            <button  >Add activitie</button>
+            <button class='create' onclick="openDiv()"  >Create new activitie</button>
         </div>
+        
+        <form id="create-todo" onsubmit="createToDo()">
+            <div class="todo-input">
+                <label for="">Your new activite</label>
+                <input name="name" type="text" id="todo-name"
+                class="new-todo">
+            </div>
+            <div class="todo-input">
+                <label for="">Where</label>
+                <input name="where" type="text" id="todo-where" class="new-todo">
+            </div>
+            <div class="todo-input">
+                <label for="">When</label>
+                <input name="when" type="text" id="todo-when" class="new-todo">
+            </div>
+            <div class="buttons-create">
+                <button 
+                type="submit" 
+                name="create" 
+                
+                id="create">Create</button>
+                <button 
+                type="button" 
+                name="create-and-add"
+                
+                id="create-and-add">Create and add</button>
+            </div>
+        </form>
+    
         <div class="input-search">
             <input type="text" id="search" required>
             <label class="label-search">Search for an activite...</label>
         </div>
-        <div class="to-dos">
-            <div class="item">
-                <p class="name">
-                    Passear com o cachorro.
-                </p>
-                <button class="delete">x</button>
-                <button class="infos">Description</button>
-            </div>
-            <div class="item">
-                <p class="name">
-                    Passear com o cachorro.
-                </p>
-                <button class="delete">x</button>
-                <button class="infos" >Description</button>
-            </div>
-            <div class="item">
-                <p class="name">
-                    Passear com o cachorro.
-                </p>
-                <button class="delete">x</button>
-                <button class="infos">Description</button>
-            </div>
+        <div id="no-items-msg">There's no to do available.</div>
+        <div id="to-dos">
         </div>
     </div>
+    
 </div>
 </body>
 </html>

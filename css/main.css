@@ -5,11 +5,51 @@ html, * {
   box-sizing: border-box; }
 
 body {
-  background: #2d53cf;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to top, #2d53cf, #2949af);
   font-family: 'Baloo Bhaina 2',cursive;
   font-size: 16px; }
 
-.new-task {
+#create-todo {
+  width: 100%;
+  height: 0px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-sizing: border-box; }
+  #create-todo .todo-input {
+    margin: 10px 0 10px 0; }
+    #create-todo .todo-input label {
+      font-size: 1.5rem;
+      display: inline-block;
+      padding: 0px; }
+    #create-todo .todo-input input {
+      height: 40px;
+      font-size: 1.5rem;
+      border: none;
+      border: #c2c2bd 2px solid;
+      outline: none;
+      display: block;
+      width: 100%;
+      padding: 10px; }
+  #create-todo .buttons-create {
+    float: right;
+    margin-bottom: 10px; }
+    #create-todo .buttons-create button {
+      color: #f9f9f9f9;
+      font-size: 1.2rem;
+      background: none;
+      outline: none;
+      border: none;
+      margin: 5px;
+      padding: 8px;
+      background: #2d53cf;
+      border-radius: 3px;
+      cursor: pointer; }
+      #create-todo .buttons-create button:hover {
+        background: #4063d5; }
+
+.task-description {
   background: #f9f9f9f9;
   box-shadow: 0px 3px 10px 1px #131212;
   position: absolute;
@@ -26,18 +66,18 @@ body {
   padding: 10px 15px 40px 8px;
   font-size: 1.2rem;
   color: #131212; }
-  .new-task h2 {
+  .task-description h2 {
     padding: 3px;
     padding-bottom: 0;
     height: 50px;
     border-bottom: 2px solid #cececa; }
-  .new-task .task-input-area {
+  .task-description .task-input-area {
     display: flex;
     flex-direction: column; }
-    .new-task .task-input-area .task {
+    .task-description .task-input-area .task {
       position: relative;
       margin: 15px 0 15px 0; }
-      .new-task .task-input-area .task label {
+      .task-description .task-input-area .task label {
         display: inline-block;
         position: relative;
         z-index: 10;
@@ -47,7 +87,7 @@ body {
         left: 5px;
         padding-top: 7px;
         cursor: text; }
-      .new-task .task-input-area .task input {
+      .task-description .task-input-area .task input {
         width: 100%;
         outline: none;
         height: 2.5rem;
@@ -69,25 +109,39 @@ body {
   background-color: #6a85df;
   opacity: 0.2; }
 
+#no-items-msg {
+  border-radius: 5px;
+  background: #cececa;
+  text-align: center;
+  opacity: 0.9;
+  font-size: 1.3rem;
+  color: #f9f9f9f9;
+  display: none;
+  width: 70%;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 30px; }
+
 .container h1 {
   color: #f9f9f9f9;
   font-size: 4em;
   text-align: center; }
 
-.container .menu {
+.container #menu {
   position: relative;
   border-radius: 4px;
   margin: 0 auto;
+  margin-bottom: 10px;
   background: #f9f9f9f9;
   padding: 25px;
   width: 700px; }
-  .container .menu .buttons {
+  .container #menu .buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 10px;
     text-align: center;
-    margin-bottom: 8px; }
-    .container .menu .buttons button {
+    margin-top: 3px; }
+    .container #menu .buttons button {
       cursor: pointer;
       color: white;
       margin: 0 auto;
@@ -99,17 +153,17 @@ body {
       height: 1.8rem;
       border-radius: 5px;
       padding: 4px 0 4px 0; }
-      .container .menu .buttons button:hover {
+      .container #menu .buttons button:hover {
         background: #c2c2bd; }
-      .container .menu .buttons button.create {
+      .container #menu .buttons button.create {
         background: #0be44c; }
-        .container .menu .buttons button.create:hover {
+        .container #menu .buttons button.create:hover {
           background: #0bda49; }
-  .container .menu .input-search {
+  .container #menu .input-search {
     position: relative;
     height: 3.7rem;
     margin-bottom: 15px; }
-    .container .menu .input-search input {
+    .container #menu .input-search input {
       position: relative;
       outline: none;
       border: none;
@@ -122,13 +176,13 @@ body {
       color: #131212;
       border-bottom: #6a85df 2px solid;
       transition: all .2s; }
-      .container .menu .input-search input:hover, .container .menu .input-search input:active {
+      .container #menu .input-search input:hover, .container #menu .input-search input:active {
         border-bottom: #2d53cf solid 2px; }
-      .container .menu .input-search input:valid + .label-search {
+      .container #menu .input-search input:valid + .label-search {
         top: -5px;
         left: 0;
         font-size: 1.2em; }
-    .container .menu .input-search .label-search {
+    .container #menu .input-search .label-search {
       position: absolute;
       left: 0px;
       top: 1.4rem;
@@ -136,46 +190,53 @@ body {
       transition: all .3s ease-out;
       font-size: 1.5rem;
       color: #6a85df; }
-  .container .menu .to-dos {
+  .container #menu #to-dos {
     padding: 5px;
     font-size: 1.5rem;
-    display: flex;
-    flex-direction: column; }
-    .container .menu .to-dos .item {
+    min-height: 100px;
+    position: relative; }
+    .container #menu #to-dos .item {
       position: relative;
-      flex: 1;
       margin-top: 10px;
+      margin-bottom: 10px;
+      height: 50px;
       padding: 3px;
-      padding-bottom: 0;
-      border-bottom: #6a85df 1px solid;
-      transition: all .3s;
+      border-radius: 35px;
+      border: #6a85df 2px solid;
+      transition: all 1s;
+      transition: transform .9s;
       cursor: pointer; }
-      .container .menu .to-dos .item:hover {
-        border-bottom: #2d53cf 1px solid; }
-      .container .menu .to-dos .item p {
+      .container #menu #to-dos .item:hover {
+        transform: translate(0, -2px);
+        border: #6a85df 2px solid; }
+      .container #menu #to-dos .item p {
         color: #131212;
         display: inline-block;
+        margin-left: 13px;
         padding-bottom: 0; }
-      .container .menu .to-dos .item button {
+      .container #menu #to-dos .item button {
         background: transparent;
         border: none;
         color: #f9f9f9f9;
-        cursor: pointer; }
-        .container .menu .to-dos .item button.delete {
+        top: -2px;
+        cursor: pointer;
+        height: 50px;
+        border-radius: 50%; }
+        .container #menu #to-dos .item button.delete {
           position: absolute;
-          right: 0px;
+          right: -2px;
           background: #ed5243;
-          width: 25px;
-          height: 25px; }
-          .container .menu .to-dos .item button.delete:hover {
+          width: 49px; }
+          .container #menu #to-dos .item button.delete:hover {
             background: #e72816; }
-        .container .menu .to-dos .item button.infos {
+        .container #menu #to-dos .item button.infos {
           position: absolute;
-          right: 25px;
+          right: 47px;
           background: #15f358;
-          height: 25px;
-          width: 90px;
+          width: 49px;
           color: #f9f9f9f9;
           font-size: 1rem; }
-          .container .menu .to-dos .item button.infos:hover {
+          .container #menu #to-dos .item button.infos:hover {
             background: #0be44c; }
+      .container #menu #to-dos .item.open {
+        transform: scale(1.05, 1.05); }
